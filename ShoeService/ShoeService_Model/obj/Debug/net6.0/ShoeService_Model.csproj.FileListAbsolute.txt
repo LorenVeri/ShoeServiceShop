@@ -1,0 +1,12 @@
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\bin\Debug\net6.0\ShoeService_Model.deps.json
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\bin\Debug\net6.0\ShoeService_Model.dll
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\bin\Debug\net6.0\ShoeService_Model.pdb
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ShoeService_Model.csproj.AssemblyReference.cache
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ShoeService_Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ShoeService_Model.AssemblyInfoInputs.cache
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ShoeService_Model.AssemblyInfo.cs
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ShoeService_Model.csproj.CoreCompileInputs.cache
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ShoeService_Model.dll
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\refint\ShoeService_Model.dll
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ShoeService_Model.pdb
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Model\obj\Debug\net6.0\ref\ShoeService_Model.dll

@@ -1,0 +1,17 @@
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Data.deps.json
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Data.runtimeconfig.json
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Data.dll
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Data.pdb
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Model.dll
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Model.pdb
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.csproj.AssemblyReference.cache
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.AssemblyInfoInputs.cache
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.AssemblyInfo.cs
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.csproj.CoreCompileInputs.cache
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.csproj.CopyComplete
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.dll
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\refint\ShoeService_Data.dll
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.pdb
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.genruntimeconfig.cache
+C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Data\obj\Debug\net6.0\ref\ShoeService_Data.dll

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8SXzEK1evFqiZvXvT/kgbs4bhG8olMd5ACv8cT6qdkpUrwQ7VJHHqV0s6+zXKUpy2Db3Hr13DMsu8KotttgJIw==",
+  "dgSpecHash": "kE9lgUXjTZXNp8XSARonKPCTgmqRmsr+AmDXU5/vCTyPYl4zTYEKG8/kCMwwkwhIBQGsPG1Nzfol/3wNpSXrsw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

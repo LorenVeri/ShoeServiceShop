@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj": {}
+    "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj": {
+    "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj",
+        "projectUniqueName": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj",
         "projectName": "ShoeService_Common",
-        "projectPath": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj",
+        "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj",
         "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_Common\\obj\\",
+        "outputPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

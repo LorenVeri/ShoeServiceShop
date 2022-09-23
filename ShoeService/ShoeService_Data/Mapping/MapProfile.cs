@@ -13,8 +13,8 @@ namespace ShoeService_Data.Mapping
     {
         public MapProfile()
         {
-            CreateMap<Shoe, ShoeDto>();
-            CreateMap<ShoeDto, Shoe>();
+            CreateMap<Shoes, ShoesDto>();
+            CreateMap<ShoesDto, Shoes>();
         }
     }
 }

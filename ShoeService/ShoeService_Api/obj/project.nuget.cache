@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jed1tt9yIkTz8OTf1ewCuRCw9t3mdPWLmWeowmH+XcBhfn45KkWNE74mlvqmswQC01ysbfd6Qg9oJUUvumx+qQ==",
+  "dgSpecHash": "Up38jLl/dR3FbQmIJVZTKlIyEUST1dJBD1Uy8fMZcclX4yem7QJxNsNMVP5hZ1WFHfqJ4EQJPbYU8amfHictCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_Api\\ShoeService_Api.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Api\\ShoeService_Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

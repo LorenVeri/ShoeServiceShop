@@ -5,22 +5,16 @@ using ShoeService_Model.Models;
 namespace ShoeService_Api.GraphQL
 {
     [ExtendObjectType("Query")]
-    public class QueryShoe
+    public class QueryShoes
     {
-        private readonly IShoeRepository _shoeRepository;
-
-        public QueryShoe(IShoeRepository shoeRepository)
-        {
-            _shoeRepository = shoeRepository;
-        }
-
         [UsePaging(IncludeTotalCount = true, MaxPageSize = 100)]
         [UseProjection]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Shoe> GetShoe()
+        public IQueryable<Shoes> GetShoes(ShoeServiceDbContext context)
         {
-            return _shoeRepository.GetAll();
+            var x = context.Shoes.Where(x => x.IsLocked == false);
+            return x;
         }
     }
 }

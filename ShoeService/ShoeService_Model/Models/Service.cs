@@ -11,10 +11,31 @@ namespace ShoeService_Model.Models
     {
         [Key]
         [Required]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(100)]
         public string? Name { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string? Code { get; set; }
+
+        [Required]
+        public double Price { get; set; }
+
+        [Required]
+        public double DiscountPrice { get; set; }
+
+        [Required]
+        public bool IsFree { get; set; }
+
+        [Required]
+        public bool IsOnSale { get; set; }
+
+        public ServiceHasShoesRepository ServiceHasShoesRepositories { get; set; }
+        public OrderDetail OrderDetail { get; set; }
+        public ServiceHasShoes ServiceHasShoes { get; set; }
+
     }
 }

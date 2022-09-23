@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ShoeService_Api.GraphQL;
 using ShoeService_Data;
+using ShoeService_Data.Infrastructure;
 using ShoeService_Data.Mapping;
 using ShoeService_Data.Repository;
 
@@ -28,13 +29,15 @@ builder.Services.AddCors(options =>
 //GraphQL
 builder.Services
         .AddGraphQLServer()
+        .RegisterDbContext<ShoeServiceDbContext>()
         .AddQueryType(x => x.Name("Query"))
-        .AddTypeExtension<QueryShoe>()
+        .AddTypeExtension<QueryShoes>()
         .AddProjections()
         .AddFiltering()
         .AddSorting();
 
 //DI
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IShoeRepository, ShoeRepository>();
 
 //Mapper

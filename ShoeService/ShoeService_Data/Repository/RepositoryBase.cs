@@ -28,7 +28,8 @@ namespace ShoeService_Data.Repository
 
         public void Update(T entity)
         {
-            _dbSet.Attach(entity);
+            //_dbSet.Attach(entity);
+            _dbSet.Update(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
 

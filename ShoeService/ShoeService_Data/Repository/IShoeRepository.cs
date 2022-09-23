@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShoeService_Data.Repository
 {
-    public interface IShoeRepository : IRepository<Shoe>
+    public interface IShoeRepository : IRepository<Shoes>
     {
     }
 }

@@ -7,26 +7,21 @@ using System.Threading.Tasks;
 
 namespace ShoeService_Model.Models
 {
-    public class Shoe : EntityBase
+    public class MemberShip : EntityBase
     {
         [Key]
         [Required]
-        public Guid ShoeId { get; set; }
+        public int MemberShipId { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string? Name { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        public string? Models { get; set; }
+        public DateTime ExpiredDate { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        public string? Brand { get; set; }
+        public string? Status { get; set; }
 
-        [Required]
-        [MaxLength(30)]
-        public string? Material { get; set; }
+        public ICollection<Customer> Customers { get; set; }
     }
 }

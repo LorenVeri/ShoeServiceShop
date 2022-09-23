@@ -18,10 +18,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="GraphQL\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\ShoeService_Data\ShoeService_Data.csproj" />
 		<ProjectReference Include="..\ShoeService_Model\ShoeService_Model.csproj" />
 	</ItemGroup>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShoeService_Data.Repository
 {
-    public class ShoeRepository : RepositoryBase<Shoe>, IShoeRepository
+    public class ShoeRepository : RepositoryBase<Shoes>, IShoeRepository
     {
         private readonly ShoeServiceDbContext _dbContext;
         public ShoeRepository(ShoeServiceDbContext dbContext) : base(dbContext)

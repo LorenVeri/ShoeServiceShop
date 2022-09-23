@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj": {}
+    "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj": {
+    "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj",
+        "projectUniqueName": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj",
         "projectName": "ShoeService_UnitTest",
-        "projectPath": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj",
+        "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_UnitTest\\ShoeService_UnitTest.csproj",
         "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asus\\Desktop\\git clone\\ShoeService\\ShoeService_UnitTest\\obj\\",
+        "outputPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShoeService_Model.Dtos
 {
-    public class ShoeDto
+    public class ShoesDto
     {
-        public Guid ShoeId { get; set; }
+        public int ShoeId { get; set; }
 
         public string? Name { get; set; }
 
@@ -17,5 +17,10 @@ namespace ShoeService_Model.Dtos
         public string? Brand { get; set; }
 
         public string? Material { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public string? CreatedBy { get; set; }
+        public DateTime UpdatedDate { get; set; } = DateTime.Now;
+        public string? UpdatedBy { get; set; }
+        public bool IsDelete { get; set; }
     }
 }

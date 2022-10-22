@@ -1,106 +1,6 @@
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\appsettings.json
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.exe
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.deps.json
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.runtimeconfig.json
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.pdb
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.csproj.AssemblyReference.cache
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.AssemblyInfoInputs.cache
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.AssemblyInfo.cs
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.csproj.CoreCompileInputs.cache
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\scopedcss\bundle\ShoeService_Api.styles.css
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.csproj.CopyComplete
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\refint\ShoeService_Api.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.pdb
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.genruntimeconfig.cache
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\obj\Debug\net6.0\ref\ShoeService_Api.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\GreenDonut.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Abstractions.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.AspNetCore.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Execution.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Fetching.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Language.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Language.SyntaxTree.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Language.Utf8.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Language.Visitors.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Subscriptions.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Subscriptions.InMemory.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Types.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Types.CursorPagination.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Types.Mutations.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Types.OffsetPagination.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Types.Scalars.Upload.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Utilities.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Utilities.Introspection.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Validation.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Newtonsoft.Json.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\AutoMapper.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Data.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\HotChocolate.Data.EntityFramework.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\System.Drawing.Common.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\System.Runtime.Caching.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\System.Security.Permissions.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\System.Windows.Extensions.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Data.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Model.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Data.pdb
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Model.pdb
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Humanizer.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_Api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\appsettings.json
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.exe
-C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.deps.json
-C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.runtimeconfig.json
-C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.dll
-C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.pdb
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\GreenDonut.dll
@@ -170,10 +70,12 @@ C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Ap
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Common.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Data.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Model.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Data.pdb
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Model.pdb
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Common.pdb
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.csproj.AssemblyReference.cache
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.AssemblyInfoInputs.cache
@@ -188,5 +90,14 @@ C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Ap
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\refint\ShoeService_Api.dll
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.pdb
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.deps.json
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.runtimeconfig.json
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.pdb
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\ShoeService_Api.genruntimeconfig.cache
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\obj\Debug\net6.0\ref\ShoeService_Api.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\ShoeService_Api.staticwebassets.runtime.json
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Api\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll

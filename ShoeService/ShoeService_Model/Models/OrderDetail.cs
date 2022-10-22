@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoeService_Model.Models
 {
+    [Table("OrderDetail")]
     public class OrderDetail
     {
         [Key]
-        public int ShoesId { get; set; }
+        public int ServiceId { get; set; }
 
         [Key]
         public int OrderId { get; set; }
@@ -23,8 +25,5 @@ namespace ShoeService_Model.Models
 
         [Required]
         public string? Status { get; set; }
-
-        public ICollection<Order> Orders { get; set; }
-        public ICollection<Service> Services { get; set; }
     }
 }

@@ -13,8 +13,7 @@ namespace ShoeService_Api.GraphQL
         [UseSorting]
         public IQueryable<Shoes> GetShoes(ShoeServiceDbContext context)
         {
-            var x = context.Shoes.Where(x => x.IsLocked == false);
-            return x;
+            return context.Shoes.Where(x => x.IsDeleted == false);
         }
     }
 }

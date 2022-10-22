@@ -17,18 +17,151 @@ namespace ShoeService_Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ShoeService_Model.Models.Customer", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("Roles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("UserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("ShoeService_Model.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -44,11 +177,10 @@ namespace ShoeService_Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int>("CustomerHasShoesCustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerHasShoesShoesId")
-                        .HasColumnType("int");
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("CustomerTelNumber")
                         .HasColumnType("int");
@@ -61,7 +193,7 @@ namespace ShoeService_Data.Migrations
                     b.Property<bool>("IsActived")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsLocked")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastLoginDate")
@@ -86,35 +218,20 @@ namespace ShoeService_Data.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
                     b.HasIndex("MemberShipId");
 
-                    b.HasIndex("CustomerHasShoesCustomerId", "CustomerHasShoesShoesId");
-
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("ShoeService_Model.Models.CustomerHasShoes", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ShoesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CustomerId", "ShoesId");
-
-                    b.ToTable("CustomerHasShoes");
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.MemberShip", b =>
                 {
-                    b.Property<int>("MemberShipId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberShipId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -125,7 +242,7 @@ namespace ShoeService_Data.Migrations
                     b.Property<DateTime>("ExpiredDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsLocked")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -142,18 +259,18 @@ namespace ShoeService_Data.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("MemberShipId");
+                    b.HasKey("Id");
 
-                    b.ToTable("MemberShips");
+                    b.ToTable("MemberShip");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -161,14 +278,8 @@ namespace ShoeService_Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsLocked")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<int>("OrderDetailOrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderDetailShoesId")
-                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -176,11 +287,9 @@ namespace ShoeService_Data.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("OrderDetailOrderId", "OrderDetailShoesId");
-
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.OrderDetail", b =>
@@ -188,7 +297,7 @@ namespace ShoeService_Data.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShoesId")
+                    b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
                     b.Property<double>("AmoutPrice")
@@ -201,9 +310,11 @@ namespace ShoeService_Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("OrderId", "ShoesId");
+                    b.HasKey("OrderId", "ServiceId");
 
-                    b.ToTable("OrderDetails");
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Product", b =>
@@ -228,10 +339,10 @@ namespace ShoeService_Data.Migrations
                     b.Property<double>("DiscountPrice")
                         .HasColumnType("float");
 
-                    b.Property<bool>("IsFree")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsLocked")
+                    b.Property<bool>("IsFree")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsOnSale")
@@ -253,27 +364,18 @@ namespace ShoeService_Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.ProductImage", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsLocked")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProductsId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("URL")
@@ -281,17 +383,11 @@ namespace ShoeService_Data.Migrations
                         .HasMaxLength(2147483647)
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
 
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                    b.HasIndex("ProductId");
 
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("ProductImages");
+                    b.ToTable("ProductImage");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Service", b =>
@@ -316,10 +412,10 @@ namespace ShoeService_Data.Migrations
                     b.Property<double>("DiscountPrice")
                         .HasColumnType("float");
 
-                    b.Property<bool>("IsFree")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsLocked")
+                    b.Property<bool>("IsFree")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsOnSale")
@@ -330,25 +426,19 @@ namespace ShoeService_Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("OrderDetailOrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderDetailShoesId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("ServiceHasShoesRepositoriesServiceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ServiceHasShoesRepositoriesShoesRepositoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("ServiceHasShoesServiceId")
+                    b.Property<int?>("ServiceHasShoesServiceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServiceHasShoesShoesId")
+                    b.Property<int?>("ServiceHasShoesShoesId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ServiceHasStorageServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ServiceHasStorageStorageId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
@@ -359,48 +449,46 @@ namespace ShoeService_Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderDetailOrderId", "OrderDetailShoesId");
+                    b.HasIndex("ServiceHasShoesShoesId", "ServiceHasShoesServiceId");
 
-                    b.HasIndex("ServiceHasShoesRepositoriesServiceId", "ServiceHasShoesRepositoriesShoesRepositoryId");
+                    b.HasIndex("ServiceHasStorageStorageId", "ServiceHasStorageServiceId");
 
-                    b.HasIndex("ServiceHasShoesServiceId", "ServiceHasShoesShoesId");
-
-                    b.ToTable("Services");
+                    b.ToTable("Service");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.ServiceHasShoes", b =>
                 {
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ShoesId")
                         .HasColumnType("int");
 
-                    b.HasKey("ServiceId", "ShoesId");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ShoesId", "ServiceId");
 
                     b.ToTable("ServiceHasShoes");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.ServiceHasShoesRepository", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.ServiceHasStorage", b =>
                 {
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("StorageId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("ShoesRepositoryId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
 
-                    b.HasKey("ServiceId", "ShoesRepositoryId");
+                    b.HasKey("StorageId", "ServiceId");
 
-                    b.ToTable("ServiceHasShoesRepository");
+                    b.ToTable("ServiceHasStorage");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Shoes", b =>
                 {
-                    b.Property<int>("ShoesId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShoesId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Brand")
                         .IsRequired()
@@ -413,13 +501,10 @@ namespace ShoeService_Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerHasShoesCustomerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CustomerHasShoesShoesId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsLocked")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Material")
@@ -435,22 +520,16 @@ namespace ShoeService_Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid?>("ServiceHasShoesRepositoryServiceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ServiceHasShoesRepositoryShoesRepositoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("ServiceHasShoesServiceId")
+                    b.Property<int?>("ServiceHasShoesServiceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServiceHasShoesShoesId")
+                    b.Property<int?>("ServiceHasShoesShoesId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("ShoeRepositoryId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("StorageHasShoesShoesId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("ShoesRepositoriesShoesRepositoryId")
+                    b.Property<int?>("StorageHasShoesStorageId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
@@ -459,26 +538,24 @@ namespace ShoeService_Data.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ShoesId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ShoesRepositoriesShoesRepositoryId");
+                    b.HasIndex("CustomerId");
 
-                    b.HasIndex("CustomerHasShoesCustomerId", "CustomerHasShoesShoesId");
+                    b.HasIndex("ServiceHasShoesShoesId", "ServiceHasShoesServiceId");
 
-                    b.HasIndex("ServiceHasShoesRepositoryServiceId", "ServiceHasShoesRepositoryShoesRepositoryId");
-
-                    b.HasIndex("ServiceHasShoesServiceId", "ServiceHasShoesShoesId");
+                    b.HasIndex("StorageHasShoesStorageId", "StorageHasShoesShoesId");
 
                     b.ToTable("Shoes");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.ShoesRepository", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.Storage", b =>
                 {
-                    b.Property<int>("ShoesRepositoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShoesRepositoryId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Code")
                         .HasMaxLength(50)
@@ -493,7 +570,7 @@ namespace ShoeService_Data.Migrations
                     b.Property<int>("Height")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsLocked")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -501,16 +578,22 @@ namespace ShoeService_Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("ServiceHasShoesRepositoriesServiceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("ServiceHasStorageServiceId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("ServiceHasShoesRepositoriesShoesRepositoryId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("ServiceHasStorageStorageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
+
+                    b.Property<int?>("StorageHasShoesShoesId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StorageHasShoesStorageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -521,125 +604,239 @@ namespace ShoeService_Data.Migrations
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
-                    b.HasKey("ShoesRepositoryId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ServiceHasShoesRepositoriesServiceId", "ServiceHasShoesRepositoriesShoesRepositoryId");
+                    b.HasIndex("ServiceHasStorageStorageId", "ServiceHasStorageServiceId");
 
-                    b.ToTable("ShoeRepositories");
+                    b.HasIndex("StorageHasShoesStorageId", "StorageHasShoesShoesId");
+
+                    b.ToTable("Storage");
+                });
+
+            modelBuilder.Entity("ShoeService_Model.Models.StorageHasShoes", b =>
+                {
+                    b.Property<int>("StorageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShoesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("StorageId", "ShoesId");
+
+                    b.ToTable("StorageHasShoes");
+                });
+
+            modelBuilder.Entity("ShoeService_Model.Models.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("ShoeService_Model.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("ShoeService_Model.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShoeService_Model.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("ShoeService_Model.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Customer", b =>
                 {
-                    b.HasOne("ShoeService_Model.Models.MemberShip", null)
+                    b.HasOne("ShoeService_Model.Models.MemberShip", "MemberShip")
                         .WithMany("Customers")
                         .HasForeignKey("MemberShipId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("ForeignKey_MemberShip_Customer");
 
-                    b.HasOne("ShoeService_Model.Models.CustomerHasShoes", "CustomerHasShoes")
-                        .WithMany("Customers")
-                        .HasForeignKey("CustomerHasShoesCustomerId", "CustomerHasShoesShoesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CustomerHasShoes");
+                    b.Navigation("MemberShip");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.Order", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.OrderDetail", b =>
                 {
-                    b.HasOne("ShoeService_Model.Models.OrderDetail", "OrderDetail")
-                        .WithMany("Orders")
-                        .HasForeignKey("OrderDetailOrderId", "OrderDetailShoesId")
+                    b.HasOne("ShoeService_Model.Models.Order", null)
+                        .WithMany("OrderDetail")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("OrderDetail");
+                    b.HasOne("ShoeService_Model.Models.Service", null)
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.ProductImage", b =>
                 {
-                    b.HasOne("ShoeService_Model.Models.Product", "Products")
+                    b.HasOne("ShoeService_Model.Models.Product", "Product")
                         .WithMany("ProductImages")
-                        .HasForeignKey("ProductsId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("ForeignKey_Product_ProductImage");
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Service", b =>
                 {
-                    b.HasOne("ShoeService_Model.Models.OrderDetail", "OrderDetail")
-                        .WithMany("Services")
-                        .HasForeignKey("OrderDetailOrderId", "OrderDetailShoesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShoeService_Model.Models.ServiceHasShoesRepository", "ServiceHasShoesRepositories")
-                        .WithMany()
-                        .HasForeignKey("ServiceHasShoesRepositoriesServiceId", "ServiceHasShoesRepositoriesShoesRepositoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ShoeService_Model.Models.ServiceHasShoes", "ServiceHasShoes")
                         .WithMany("Services")
-                        .HasForeignKey("ServiceHasShoesServiceId", "ServiceHasShoesShoesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiceHasShoesShoesId", "ServiceHasShoesServiceId");
 
-                    b.Navigation("OrderDetail");
+                    b.HasOne("ShoeService_Model.Models.ServiceHasStorage", "ServiceHasStorage")
+                        .WithMany("Services")
+                        .HasForeignKey("ServiceHasStorageStorageId", "ServiceHasStorageServiceId");
 
                     b.Navigation("ServiceHasShoes");
 
-                    b.Navigation("ServiceHasShoesRepositories");
+                    b.Navigation("ServiceHasStorage");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Shoes", b =>
                 {
-                    b.HasOne("ShoeService_Model.Models.ShoesRepository", "ShoesRepositories")
+                    b.HasOne("ShoeService_Model.Models.Customer", "Customer")
                         .WithMany("Shoes")
-                        .HasForeignKey("ShoesRepositoriesShoesRepositoryId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShoeService_Model.Models.CustomerHasShoes", "CustomerHasShoes")
-                        .WithMany("Shoes")
-                        .HasForeignKey("CustomerHasShoesCustomerId", "CustomerHasShoesShoesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShoeService_Model.Models.ServiceHasShoesRepository", null)
-                        .WithMany("Shoes")
-                        .HasForeignKey("ServiceHasShoesRepositoryServiceId", "ServiceHasShoesRepositoryShoesRepositoryId");
+                        .IsRequired()
+                        .HasConstraintName("ForeignKey_Customer_Shoes");
 
                     b.HasOne("ShoeService_Model.Models.ServiceHasShoes", "ServiceHasShoes")
                         .WithMany("Shoes")
-                        .HasForeignKey("ServiceHasShoesServiceId", "ServiceHasShoesShoesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiceHasShoesShoesId", "ServiceHasShoesServiceId");
 
-                    b.Navigation("CustomerHasShoes");
+                    b.HasOne("ShoeService_Model.Models.StorageHasShoes", "StorageHasShoes")
+                        .WithMany("Shoes")
+                        .HasForeignKey("StorageHasShoesStorageId", "StorageHasShoesShoesId");
+
+                    b.Navigation("Customer");
 
                     b.Navigation("ServiceHasShoes");
 
-                    b.Navigation("ShoesRepositories");
+                    b.Navigation("StorageHasShoes");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.ShoesRepository", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.Storage", b =>
                 {
-                    b.HasOne("ShoeService_Model.Models.ServiceHasShoesRepository", "ServiceHasShoesRepositories")
-                        .WithMany("ShoesRepositories")
-                        .HasForeignKey("ServiceHasShoesRepositoriesServiceId", "ServiceHasShoesRepositoriesShoesRepositoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ShoeService_Model.Models.ServiceHasStorage", "ServiceHasStorage")
+                        .WithMany("Storages")
+                        .HasForeignKey("ServiceHasStorageStorageId", "ServiceHasStorageServiceId");
 
-                    b.Navigation("ServiceHasShoesRepositories");
+                    b.HasOne("ShoeService_Model.Models.StorageHasShoes", "StorageHasShoes")
+                        .WithMany("Storages")
+                        .HasForeignKey("StorageHasShoesStorageId", "StorageHasShoesShoesId");
+
+                    b.Navigation("ServiceHasStorage");
+
+                    b.Navigation("StorageHasShoes");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.CustomerHasShoes", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.Customer", b =>
                 {
-                    b.Navigation("Customers");
-
                     b.Navigation("Shoes");
                 });
 
@@ -648,16 +845,19 @@ namespace ShoeService_Data.Migrations
                     b.Navigation("Customers");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.OrderDetail", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.Order", b =>
                 {
-                    b.Navigation("Orders");
-
-                    b.Navigation("Services");
+                    b.Navigation("OrderDetail");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.Product", b =>
                 {
                     b.Navigation("ProductImages");
+                });
+
+            modelBuilder.Entity("ShoeService_Model.Models.Service", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 
             modelBuilder.Entity("ShoeService_Model.Models.ServiceHasShoes", b =>
@@ -667,16 +867,18 @@ namespace ShoeService_Data.Migrations
                     b.Navigation("Shoes");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.ServiceHasShoesRepository", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.ServiceHasStorage", b =>
                 {
-                    b.Navigation("Shoes");
+                    b.Navigation("Services");
 
-                    b.Navigation("ShoesRepositories");
+                    b.Navigation("Storages");
                 });
 
-            modelBuilder.Entity("ShoeService_Model.Models.ShoesRepository", b =>
+            modelBuilder.Entity("ShoeService_Model.Models.StorageHasShoes", b =>
                 {
                     b.Navigation("Shoes");
+
+                    b.Navigation("Storages");
                 });
 #pragma warning restore 612, 618
         }

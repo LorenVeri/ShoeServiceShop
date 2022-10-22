@@ -33,7 +33,7 @@ namespace ShoeService_Data.Repository
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual T? GetSingleById(Guid id)
+        public virtual T? GetSingleById(int id)
         {
             return _dbSet.Find(id);
         }

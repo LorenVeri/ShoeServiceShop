@@ -32,3 +32,5 @@ C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Da
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.pdb
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Data\obj\Debug\net6.0\ShoeService_Data.genruntimeconfig.cache
 C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Data\obj\Debug\net6.0\ref\ShoeService_Data.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Common.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_Data\bin\Debug\net6.0\ShoeService_Common.pdb

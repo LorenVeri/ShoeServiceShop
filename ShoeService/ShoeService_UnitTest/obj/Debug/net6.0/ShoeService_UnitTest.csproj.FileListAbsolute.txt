@@ -10,3 +10,15 @@ C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_UnitTest\obj\Debug\net6.
 C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\refint\ShoeService_UnitTest.dll
 C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.pdb
 C:\Users\asus\Desktop\git clone\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ref\ShoeService_UnitTest.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\bin\Debug\net6.0\ShoeService_UnitTest.deps.json
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\bin\Debug\net6.0\ShoeService_UnitTest.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\bin\Debug\net6.0\ShoeService_UnitTest.pdb
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.csproj.AssemblyReference.cache
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.AssemblyInfoInputs.cache
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.AssemblyInfo.cs
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.csproj.CoreCompileInputs.cache
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\refint\ShoeService_UnitTest.dll
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ShoeService_UnitTest.pdb
+C:\Users\asus\Desktop\ShoeServiceShop\ShoeServiceShop\ShoeService\ShoeService_UnitTest\obj\Debug\net6.0\ref\ShoeService_UnitTest.dll

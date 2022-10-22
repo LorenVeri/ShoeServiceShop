@@ -6,7 +6,7 @@
         public string? CreatedBy { get; set; }
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
         public string? UpdatedBy { get; set; }
-        public bool IsLocked { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
 
     }
 }

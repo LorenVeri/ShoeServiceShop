@@ -12,7 +12,7 @@ namespace ShoeService_Data.IRepository
         IQueryable<T> GetAll();
         void Add(T entity);
         void Update(T entity);
-        T GetSingleById(Guid id);
+        T GetSingleById(int id);
         T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null);
         Task<int> SaveAsync();
     }

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ShoeService_Model.Models;
 
 namespace ShoeService_Model.Dtos
 {
-    public class ShoesDto
+    public class ShoesDto : EntityBase
     {
-        public int ShoeId { get; set; }
-
+        public int Id { get; set; }
         public string? Name { get; set; }
 
         public string? Models { get; set; }
@@ -17,10 +12,6 @@ namespace ShoeService_Model.Dtos
         public string? Brand { get; set; }
 
         public string? Material { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public string? CreatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; } = DateTime.Now;
-        public string? UpdatedBy { get; set; }
-        public bool IsDelete { get; set; }
+        public int CustomerId { get; set; }
     }
 }

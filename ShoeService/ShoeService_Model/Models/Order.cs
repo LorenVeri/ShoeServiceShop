@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoeService_Model.Models
 {
+    [Table("Order")]
     public class Order : EntityBase
     {
         [Key]
         [Required]
-        public int OrderId { get; set; }
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
 
-        public OrderDetail OrderDetail { get; set; }
+        public int Id { get; set; }
+
+        public ICollection<OrderDetail>? OrderDetail { get; set; }
     }
 }

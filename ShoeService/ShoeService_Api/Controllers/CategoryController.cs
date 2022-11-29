@@ -1,44 +1,73 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ShoeService_Api.Notifications;
-using ShoeService_Data;
 using ShoeService_Data.Infrastructure;
 using ShoeService_Data.IRepository;
-using ShoeService_Data.Repository;
+using ShoeService_Data;
 using ShoeService_Model.Dtos;
 using ShoeService_Model.Models;
 using System.Net;
+using Microsoft.EntityFrameworkCore;
+using ShoeService_Model.ViewModel;
 
 namespace ShoeService_Api.Controllers
 {
-    public class CustomerController : BaseController
+    public class CategoryController : BaseController
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerController(ICustomerRepository customerRepository, IMapper mapper, IUnitOfWork unitOfWork)
+        public CategoryController(ICategoryRepository categoryRepository, IMapper mapper, IUnitOfWork unitOfWork)
         {
-            _customerRepository = customerRepository;
+            _categoryRepository = categoryRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost("Create")]
-        public async Task<ActionResult> Create(CustomerDto customerDto)
+        [HttpGet]
+        public async Task<ActionResult> Get()
         {
             ResponseResult responseResult = new ResponseResult();
 
-            if (customerDto != null)
+            var category = await _categoryRepository.GetAll().ToListAsync();
+            var categoryViewModels = new List<CategoryViewModel>();
+            if (category != null)
             {
-                var customer = _mapper.Map<Customer>(customerDto);
-                _customerRepository.Add(customer);
+                responseResult.StatusCode = (int)HttpStatusCode.OK;
+                responseResult.Status = CustomerNotification.Success;
+                responseResult.Message = CustomerNotification.Get_Success;
+                responseResult.Data = category;
+
+                return Ok(responseResult);
+            }
+            else
+            {
+                responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
+                responseResult.Status = CustomerNotification.Fail;
+                responseResult.Message = CustomerNotification.Get_Fail;
+                responseResult.Data = null;
+
+                return BadRequest(responseResult);
+            }
+           
+        }
+
+        [HttpPost("Create")]
+        public async Task<ActionResult> Create(CategoryDto categoryDto)
+        {
+            ResponseResult responseResult = new ResponseResult();
+
+            if (categoryDto != null)
+            {
+                var category = _mapper.Map<Category>(categoryDto);
+                _categoryRepository.Add(category);
                 if (await _unitOfWork.CommitAsync() >= 0)
                 {
                     responseResult.StatusCode = (int)HttpStatusCode.OK;
                     responseResult.Status = CustomerNotification.Success;
                     responseResult.Message = CustomerNotification.Create_Success;
-                    responseResult.Data = customerDto;
+                    responseResult.Data = category;
 
                     return Ok(responseResult);
                 }
@@ -64,12 +93,12 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<ActionResult> Update(CustomerDto customerDto, [FromServices] ShoeServiceDbContext context)
+        public async Task<ActionResult> Update(CategoryDto categoryDto, [FromServices] ShoeServiceDbContext context)
         {
             ResponseResult responseResult = new ResponseResult();
-            if (customerDto != null)
+            if (categoryDto != null)
             {
-                var existShoes = context.Customers.FirstOrDefault(x => x.Id == customerDto.Id);
+                var existShoes = context.Customers.FirstOrDefault(x => x.Id == categoryDto.Id);
                 if (existShoes == null)
                 {
                     responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
@@ -80,14 +109,14 @@ namespace ShoeService_Api.Controllers
                 }
                 else
                 {
-                    var customer = _mapper.Map<Customer>(customerDto);
-                    _customerRepository.Add(customer);
+                    var category = _mapper.Map<Category>(categoryDto);
+                    _categoryRepository.Add(category);
                     if (await _unitOfWork.CommitAsync() >= 0)
                     {
                         responseResult.StatusCode = (int)HttpStatusCode.OK;
                         responseResult.Status = ShoeNotification.Success;
                         responseResult.Message = ShoeNotification.Update_Success;
-                        responseResult.Data = customerDto;
+                        responseResult.Data = categoryDto;
 
                         return Ok(responseResult);
                     }
@@ -120,7 +149,7 @@ namespace ShoeService_Api.Controllers
 
             if (id != null)
             {
-                var shoes = _customerRepository.GetSingleById(id);
+                var shoes = _categoryRepository.GetSingleById(id);
                 if (shoes != null)
                 {
 

@@ -19,9 +19,8 @@ namespace ShoeService_Data.Mapping
 
             CreateMap<Customer, CustomerDto>();
             CreateMap<CustomerDto, Customer>();
-            CreateMap<RegisterDto, Customer>()
-                .ForMember(r => r.PasswordHash, act => act.MapFrom(src => src.Password))
-                .ForMember(r => r.CustomerEmail, act => act.MapFrom(src => src.Email));
+            CreateMap<RegisterDto, User>()
+                .ForMember(r => r.PasswordHash, act => act.MapFrom(src => src.Password));
 
             CreateMap<MemberShip, MemberShipDto>();
             CreateMap<MemberShipDto, MemberShip>();
@@ -31,6 +30,9 @@ namespace ShoeService_Data.Mapping
 
             CreateMap<Storage, StorageDto>();
             CreateMap<StorageDto, Storage>();
+
+            CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryDto, Category>();
         }
     }
 }

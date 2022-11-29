@@ -10,9 +10,7 @@ using System.Net;
 
 namespace ShoeService_Api.Controllers
 {
-    [ApiController]
-    [Route("/api/v1/[controller]")]
-    public class ShoesController : Controller
+    public class ShoesController : BaseController
     {
         private readonly IShoeRepository _shoeRepository;
         private readonly IMapper _mapper;
@@ -64,7 +62,7 @@ namespace ShoeService_Api.Controllers
             }
         }
 
-        [HttpPost("Update")]
+        [HttpPut("Update")]
         public async Task<ActionResult> Update(ShoesDto shoeDto, [FromServices] ShoeServiceDbContext context)
         {
             ResponseResult responseResult = new ResponseResult();
@@ -114,7 +112,7 @@ namespace ShoeService_Api.Controllers
             }
         }
 
-        [HttpPost("Delete")]
+        [HttpDelete("Delete")]
         public async Task<ActionResult> Delete(int id)
         {
             ResponseResult responseResult = new ResponseResult();

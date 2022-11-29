@@ -9,7 +9,7 @@ namespace ShoeService_Api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class LoginController : Controller
+    public class LoginController : ControllerBase
     {
         private readonly ICustomerRepository _customerRepository;
         public LoginController(ICustomerRepository customerRepository)
@@ -42,7 +42,7 @@ namespace ShoeService_Api.Controllers
 
                     return BadRequest(responseResult);
                 }
-                else if (customer.IsActived == false)
+                else if (!customer.IsActived)
                 {
                     responseResult.Status = CustomerNotification.Fail;
                     responseResult.StatusCode = (int)HttpStatusCode.NotFound;

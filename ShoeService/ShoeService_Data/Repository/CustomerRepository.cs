@@ -38,9 +38,9 @@ namespace ShoeService_Data.Repository
         public Customer Register(RegisterDto registerDto)
         {
             var customer = _mapper.Map<Customer>(registerDto);
+            customer.MemberShipId = 1;
             customer.PasswordHash = ConvertMD5.CreateMD5(registerDto.Password);
-            customer.CustomerName = ConvertString.convertToUnSign($"{registerDto.FirstName}{registerDto.LastName}").ToLower();
-            customer.MemberShipId = 6;
+            customer.CustomerName = ConvertString.convertToUnSign($"{registerDto.FirstName.Trim()}{registerDto.LastName}").ToLower();
             _dbContext.Customers.Add(customer);
             return customer;
         }

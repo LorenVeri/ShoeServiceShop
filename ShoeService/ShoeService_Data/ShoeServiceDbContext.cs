@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ShoeService_Model.Dtos;
 using ShoeService_Model.Models;
 
 namespace ShoeService_Data
@@ -47,25 +48,28 @@ namespace ShoeService_Data
                 table.ShoesId
             });
 
+            modelBuilder.Entity<CommandInFunction>()
+                       .HasKey(c => new { c.CommandId, c.FunctionId });
+
             modelBuilder.Entity<Customer>()
-            .HasMany(p => p.Shoes)
-            .WithOne(b => b.Customer)
-            .HasForeignKey(p => p.CustomerId)
-            .HasConstraintName("ForeignKey_Customer_Shoes")
-            .OnDelete(DeleteBehavior.Cascade);
+                .HasMany(p => p.Shoes)
+                .WithOne(b => b.Customer)
+                .HasForeignKey(p => p.CustomerId)
+                .HasConstraintName("ForeignKey_Customer_Shoes")
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<MemberShip>()
-            .HasMany(p => p.Customers)
-            .WithOne(b => b.MemberShip)
-            .HasForeignKey(p => p.MemberShipId)
-            .HasConstraintName("ForeignKey_MemberShip_Customer");
+                .HasMany(p => p.Customers)
+                .WithOne(b => b.MemberShip)
+                .HasForeignKey(p => p.MemberShipId)
+                .HasConstraintName("ForeignKey_MemberShip_Customer");
 
             modelBuilder.Entity<Product>()
-            .HasMany(p => p.ProductImages)
-            .WithOne(b => b.Product)
-            .HasForeignKey(p => p.ProductId)
-            .HasConstraintName("ForeignKey_Product_ProductImage")
-            .OnDelete(DeleteBehavior.Cascade);
+                .HasMany(p => p.ProductImages)
+                .WithOne(b => b.Product)
+                .HasForeignKey(p => p.ProductId)
+                .HasConstraintName("ForeignKey_Product_ProductImage")
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
 
@@ -81,5 +85,9 @@ namespace ShoeService_Data
         public DbSet<Shoes> Shoes { get; set; }
         public DbSet<Storage> Repositories { get; set; }
         public DbSet<StorageHasShoes> StorageHasShoes { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Command> Commands { get; set; }
+        public DbSet<Function> Functions { get; set; }
+        public DbSet<CommandInFunction> CommandInFunctions { get; set; }
     }
 }

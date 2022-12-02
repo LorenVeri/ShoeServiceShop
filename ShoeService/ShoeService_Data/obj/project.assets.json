@@ -2282,19 +2282,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\asus\\.nuget\\packages\\": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj",
       "projectName": "ShoeService_Data",
-      "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj",
-      "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\obj\\",
+      "projectPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2308,11 +2308,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj": {
-              "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj"
+            "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Common\\ShoeService_Common.csproj"
             },
-            "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj": {
-              "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj"
+            "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj"
             }
           }
         }
@@ -2366,7 +2366,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

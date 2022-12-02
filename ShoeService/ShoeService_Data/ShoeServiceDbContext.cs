@@ -48,6 +48,13 @@ namespace ShoeService_Data
                 table.ShoesId
             });
 
+            modelBuilder.Entity<Permission>().HasKey(c => new 
+            { 
+                c.RoleId, 
+                c.FunctionId, 
+                c.CommandId 
+            });
+
             modelBuilder.Entity<CommandInFunction>()
                        .HasKey(c => new { c.CommandId, c.FunctionId });
 
@@ -89,5 +96,6 @@ namespace ShoeService_Data
         public DbSet<Command> Commands { get; set; }
         public DbSet<Function> Functions { get; set; }
         public DbSet<CommandInFunction> CommandInFunctions { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
     }
 }

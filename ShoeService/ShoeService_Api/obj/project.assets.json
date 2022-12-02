@@ -31,6 +31,43 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "Duende.IdentityServer/6.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Duende.IdentityServer.Storage": "6.2.0",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Duende.IdentityServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Duende.IdentityServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Duende.IdentityServer.Storage/6.2.0": {
+        "type": "package",
+        "dependencies": {
+          "IdentityModel": "6.0.0",
+          "Microsoft.AspNetCore.DataProtection.Abstractions": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Duende.IdentityServer.Storage.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Duende.IdentityServer.Storage.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GreenDonut/12.14.0": {
         "type": "package",
         "dependencies": {
@@ -444,6 +481,19 @@
           }
         }
       },
+      "IdentityModel/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/IdentityModel.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/IdentityModel.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.10": {
         "type": "package",
         "dependencies": {
@@ -456,6 +506,25 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.10.0"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
             "related": ".xml"
           }
         },
@@ -488,6 +557,19 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.DataProtection.Abstractions/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {
             "related": ".xml"
           }
         }
@@ -1639,6 +1721,40 @@
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
       ]
     },
+    "Duende.IdentityServer/6.2.0": {
+      "sha512": "uBrXl0mXd9S1zGzediYBZ7SxMMDHZq19yKezKSpQ4Dhz5ktDQdXrvQyhQ4DhRs/5POzjOu6ftFVsUJz2aekQxg==",
+      "type": "package",
+      "path": "duende.identityserver/6.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "duende.identityserver.6.2.0.nupkg.sha512",
+        "duende.identityserver.nuspec",
+        "icon.png",
+        "lib/net6.0/Duende.IdentityServer.dll",
+        "lib/net6.0/Duende.IdentityServer.xml",
+        "lib/net7.0/Duende.IdentityServer.dll",
+        "lib/net7.0/Duende.IdentityServer.xml"
+      ]
+    },
+    "Duende.IdentityServer.Storage/6.2.0": {
+      "sha512": "aOkvSO4Gnm5ypjZY6ZT1LeRDA8vYoimhBhU9iz//OjGeNV4J2/ErciJ4rLTMjFMYlv2oX7bhz8DxDvPfWDJ37w==",
+      "type": "package",
+      "path": "duende.identityserver.storage/6.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "duende.identityserver.storage.6.2.0.nupkg.sha512",
+        "duende.identityserver.storage.nuspec",
+        "icon.png",
+        "lib/net6.0/Duende.IdentityServer.Storage.dll",
+        "lib/net6.0/Duende.IdentityServer.Storage.xml",
+        "lib/net7.0/Duende.IdentityServer.Storage.dll",
+        "lib/net7.0/Duende.IdentityServer.Storage.xml"
+      ]
+    },
     "GreenDonut/12.14.0": {
       "sha512": "B23QP+7aun6PsMW0hVaHdjZwShJnFOVaQ28qyhmaEhIx3JGSgbnUeZuYUwpGGiUqYNSjQPjsjrepgO0i/E4UzA==",
       "type": "package",
@@ -2155,6 +2271,33 @@
         "logo.png"
       ]
     },
+    "IdentityModel/6.0.0": {
+      "sha512": "eVHCR7a6m/dm5RFcBzE3qs/Jg5j9R5Rjpu8aTOv9e4AFvaQtBXb5ah7kmwU+YwA0ufRwz4wf1hnIvsD2hSnI4g==",
+      "type": "package",
+      "path": "identitymodel/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.jpg",
+        "identitymodel.6.0.0.nupkg.sha512",
+        "identitymodel.nuspec",
+        "lib/net461/IdentityModel.dll",
+        "lib/net461/IdentityModel.pdb",
+        "lib/net461/IdentityModel.xml",
+        "lib/net472/IdentityModel.dll",
+        "lib/net472/IdentityModel.pdb",
+        "lib/net472/IdentityModel.xml",
+        "lib/net5.0/IdentityModel.dll",
+        "lib/net5.0/IdentityModel.pdb",
+        "lib/net5.0/IdentityModel.xml",
+        "lib/net6.0/IdentityModel.dll",
+        "lib/net6.0/IdentityModel.pdb",
+        "lib/net6.0/IdentityModel.xml",
+        "lib/netstandard2.0/IdentityModel.dll",
+        "lib/netstandard2.0/IdentityModel.pdb",
+        "lib/netstandard2.0/IdentityModel.xml"
+      ]
+    },
     "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.10": {
       "sha512": "4SBTyAuYHSiFi/AiqlKiKpl2+EkKaS/q1zeDI4L88cMmy5P01pse25gOAyzfWycI8voz+d1FwTIuqhWCH87IJQ==",
       "type": "package",
@@ -2168,6 +2311,21 @@
         "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
         "microsoft.aspnetcore.authentication.jwtbearer.6.0.10.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect/6.0.0": {
+      "sha512": "cJxdro36spFzk/K2OFCddM6vZ+yoj6ug8mTFRH3Gdv1Pul/buSuCtfb/FSCp31UmS5S4C1315dU7wX3ErLFuDg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.openidconnect/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net6.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll",
+        "lib/net6.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.xml",
+        "microsoft.aspnetcore.authentication.openidconnect.6.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.openidconnect.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/6.0.10": {
@@ -2206,6 +2364,25 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
         "microsoft.aspnetcore.cryptography.keyderivation.6.0.10.nupkg.sha512",
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.DataProtection.Abstractions/6.0.0": {
+      "sha512": "Z/UU4NEBm5UgNufJmw+j5baW26ytCOIZ0G7sZocPaOzsUeBon1bkM3lSMNZQG2GmDjAIVP2XMSODf2jzSGbibw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.dataprotection.abstractions/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.DataProtection.Abstractions.dll",
+        "lib/net461/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
+        "lib/net6.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll",
+        "lib/net6.0/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
+        "microsoft.aspnetcore.dataprotection.abstractions.6.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.dataprotection.abstractions.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/6.0.10": {
@@ -4037,6 +4214,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 11.0.0",
+      "Duende.IdentityServer >= 6.2.0",
       "HotChocolate.AspNetCore >= 12.14.0",
       "HotChocolate.Data.EntityFramework >= 12.14.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.10",
@@ -4048,19 +4226,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\asus\\.nuget\\packages\\": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Api\\ShoeService_Api.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Api\\ShoeService_Api.csproj",
       "projectName": "ShoeService_Api",
-      "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Api\\ShoeService_Api.csproj",
-      "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Api\\obj\\",
+      "projectPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Api\\ShoeService_Api.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4074,11 +4252,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj": {
-              "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj"
+            "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Data\\ShoeService_Data.csproj"
             },
-            "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj": {
-              "projectPath": "C:\\Users\\asus\\Desktop\\ShoeServiceShop\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj"
+            "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\SS\\ShoeServiceShop\\ShoeService\\ShoeService_Model\\ShoeService_Model.csproj"
             }
           }
         }
@@ -4096,6 +4274,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[11.0.0, )"
+          },
+          "Duende.IdentityServer": {
+            "target": "Package",
+            "version": "[6.2.0, )"
           },
           "HotChocolate.AspNetCore": {
             "target": "Package",
@@ -4143,7 +4325,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

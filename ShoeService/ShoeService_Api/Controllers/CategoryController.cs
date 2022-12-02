@@ -9,10 +9,15 @@ using ShoeService_Model.Models;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
 using ShoeService_Model.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using ShoeService_Api.Constants;
 
 namespace ShoeService_Api.Controllers
 {
-    public class CategoryController : BaseController
+    [Authorize(Roles = $"{RoleManager.RoleAdmin}, {RoleManager.RoleStaff}, {RoleManager.RoleStoreManager}")]
+    [ApiController]
+    [Route("api/v1/[controller]")]
+    public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;

@@ -21,15 +21,17 @@ namespace ShoeService_Api.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
 
-        public AuthenticationController(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration, IMapper mapper)
+        public AuthenticationController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager, IConfiguration configuration, IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
             _mapper = mapper;
+            _roleManager = roleManager;
         }
 
         [HttpPost]
@@ -160,17 +162,17 @@ namespace ShoeService_Api.Controllers
         {
             var roles = await _userManager.GetRolesAsync(user);
 
-            //var query = from p in _context.Permissions
-            //            join c in _context.Commands
-            //              on p.CommandId equals c.Id
-            //            join f in _context.Functions
-            //              on p.FunctionId equals f.Id
-            //            join r in _roleManager.Roles
-            //              on p.RoleId equals r.Id
-            //            where roles.Contains(r.Name)
-            //            select f.Id + "_" + c.Id;
+            var query = from p in _context.Permissions
+                        join c in _context.Commands
+                          on p.CommandId equals c.Id
+                        join f in _context.Functions
+                          on p.FunctionId equals f.Id
+                        join r in _roleManager.Roles
+                          on p.RoleId equals r.Id
+                        where roles.Contains(r.Name)
+                        select f.Id + "_" + c.Id;
 
-            //var permissions = await query.Distinct().ToListAsync();
+            var permissions = await query.Distinct().ToListAsync();
 
             var identity = new List<Claim>();
             identity.Add(new Claim(ClaimTypes.Name, user.UserName ?? ""));
@@ -178,7 +180,7 @@ namespace ShoeService_Api.Controllers
             identity.Add(new Claim("FullName", (user.FirstName + " " + user.LastName) ?? ""));
             identity.Add(new Claim("UserID", user.Id ?? ""));
             identity.Add(new Claim(ClaimTypes.Role, string.Join(";", roles)));
-            //identity.Add(new Claim(SystemConstants.Claims.Permissions, JsonConvert.SerializeObject(permissions)));
+            identity.Add(new Claim("Permissions", JsonConvert.SerializeObject(permissions)));
 
             return identity;
         }

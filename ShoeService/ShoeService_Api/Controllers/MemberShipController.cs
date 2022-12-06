@@ -1,15 +1,23 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ShoeService_Api.Authorization;
+using ShoeService_Api.Constants;
 using ShoeService_Api.Notifications;
+using ShoeService_Common.Constants;
 using ShoeService_Data;
 using ShoeService_Data.Infrastructure;
 using ShoeService_Data.IRepository;
+using ShoeService_Data.Repository;
 using ShoeService_Model.Dtos;
 using ShoeService_Model.Models;
 using System.Net;
+using static ShoeService_Common.Constants.SystemConstants;
 
 namespace ShoeService_Api.Controllers
 {
+    [Authorize(Roles = $"{RoleManager.RoleAdmin}, {RoleManager.RoleStaff}, {RoleManager.RoleStoreManager}, {RoleManager.RoleMember}")]
     public class MemberShipController : BaseController
     {
         private readonly IMemberShipRepository _memerShipRepository;
@@ -23,7 +31,35 @@ namespace ShoeService_Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [HttpGet]
+        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.VIEW)]
+        public async Task<ActionResult> Get()
+        {
+            ResponseResult responseResult = new ResponseResult();
+
+            var memberShip = await _memerShipRepository.GetAll().ToListAsync();
+            if (memberShip != null)
+            {
+                responseResult.StatusCode = (int)HttpStatusCode.OK;
+                responseResult.Status = CustomerNotification.Success;
+                responseResult.Message = CustomerNotification.Get_Success;
+                responseResult.Data = memberShip;
+
+                return Ok(responseResult);
+            }
+            else
+            {
+                responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
+                responseResult.Status = CustomerNotification.Fail;
+                responseResult.Message = CustomerNotification.Get_Fail;
+                responseResult.Data = null;
+
+                return BadRequest(responseResult);
+            }
+        }
+
         [HttpPost("Create")]
+        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.CREATE)]
         public async Task<ActionResult> Create(MemberShipDto memberShipDto)
         {
             ResponseResult responseResult = new ResponseResult();
@@ -63,6 +99,7 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpPut("Update")]
+        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.UPDATE)]
         public async Task<ActionResult> Update(MemberShipDto memberShipDto, [FromServices] ShoeServiceDbContext context)
         {
             ResponseResult responseResult = new ResponseResult();
@@ -113,6 +150,7 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpDelete("Delete")]
+        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.DELETE)]
         public async Task<ActionResult> Delete(int id)
         {
             ResponseResult responseResult = new ResponseResult();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ShoeService_Api.GraphQL;
@@ -39,7 +40,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
     // Cấu hình Lockout - khóa user
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // Khóa 5 phút
-    options.Lockout.MaxFailedAccessAttempts = 5; // Thất bại 5 lầ thì khóa
+    options.Lockout.MaxFailedAccessAttempts = 5; // Thất bại 5 lần thì khóa
     options.Lockout.AllowedForNewUsers = true;
 
     // Cấu hình về User.
@@ -118,6 +119,8 @@ builder.Services
         .AddSorting();
 
 //DI
+builder.Services.AddScoped<DbInitialize>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IShoeRepository, ShoeRepository>();
 builder.Services.AddScoped<IServiceHasShoesRepository, ServiceHasShoesRepository>();
@@ -129,8 +132,19 @@ builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IMemberShipRepository, MemberShipRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+//DB Initialize
+//var serviceprovider = builder.Services.BuildServiceProvider();
+//try
+//{
+//    //var dbInitializer = services.GetService<DbInitializer>();
+//    var dbInitializer = serviceprovider.GetService<DbInitialize>(); ;
+//    dbInitializer.Seed().Wait();
+//}
+//catch (Exception ex)
+//{
+//}
+
 //Mapper
-//Auto Mapper
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
 

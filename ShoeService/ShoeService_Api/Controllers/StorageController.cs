@@ -1,7 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ShoeService_Api.Authorization;
+using ShoeService_Api.Constants;
 using ShoeService_Api.Controllers;
 using ShoeService_Api.Notifications;
+using ShoeService_Common.Constants;
 using ShoeService_Data.Infrastructure;
 using ShoeService_Data.IRepository;
 using ShoeService_Model.Dtos;
@@ -10,6 +15,7 @@ using System.Net;
 
 namespace ShoeStorage_Api.Controllers
 {
+    [Authorize(Roles = $"{RoleManager.RoleAdmin}, {RoleManager.RoleStaff}, {RoleManager.RoleStoreManager}, {RoleManager.RoleMember}")]
     public class StorageController : BaseController
     {
         private readonly IStorageRepository _storageRepository;
@@ -25,7 +31,35 @@ namespace ShoeStorage_Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [HttpGet]
+        [ClaimRequirement(FunctionCode.STORAGE, CommandCode.VIEW)]
+        public async Task<ActionResult> Get()
+        {
+            ResponseResult responseResult = new ResponseResult();
+
+            var storages = await _storageRepository.GetAll().ToListAsync();
+            if (storages != null)
+            {
+                responseResult.StatusCode = (int)HttpStatusCode.OK;
+                responseResult.Status = CustomerNotification.Success;
+                responseResult.Message = CustomerNotification.Get_Success;
+                responseResult.Data = storages;
+
+                return Ok(responseResult);
+            }
+            else
+            {
+                responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
+                responseResult.Status = CustomerNotification.Fail;
+                responseResult.Message = CustomerNotification.Get_Fail;
+                responseResult.Data = null;
+
+                return BadRequest(responseResult);
+            }
+        }
+
         [HttpPost]
+        [ClaimRequirement(FunctionCode.STORAGE, CommandCode.CREATE)]
         public async Task<IActionResult> Post(StorageDto entity)
         {
 
@@ -64,6 +98,7 @@ namespace ShoeStorage_Api.Controllers
         }
 
         [HttpPut]
+        [ClaimRequirement(FunctionCode.STORAGE, CommandCode.UPDATE)]
         public async Task<IActionResult> Put(StorageDto entity)
         {
 
@@ -102,6 +137,7 @@ namespace ShoeStorage_Api.Controllers
         }
 
         [HttpDelete("Delete")]
+        [ClaimRequirement(FunctionCode.STORAGE, CommandCode.DELETE)]
         public async Task<ActionResult> Delete(int id)
         {
             ResponseResult responseResult = new ResponseResult();

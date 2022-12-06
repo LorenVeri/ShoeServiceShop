@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using ShoeService_Model.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using ShoeService_Api.Constants;
+using ShoeService_Api.Authorization;
+using ShoeService_Common.Constants;
 
 namespace ShoeService_Api.Controllers
 {
@@ -31,6 +33,7 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpGet]
+        [ClaimRequirement(FunctionCode.CATEGORY, CommandCode.VIEW)]
         public async Task<ActionResult> Get()
         {
             ResponseResult responseResult = new ResponseResult();
@@ -59,6 +62,7 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpPost("Create")]
+        [ClaimRequirement(FunctionCode.CATEGORY, CommandCode.CREATE)]
         public async Task<ActionResult> Create(CategoryDto categoryDto)
         {
             ResponseResult responseResult = new ResponseResult();
@@ -98,6 +102,7 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpPut("Update")]
+        [ClaimRequirement(FunctionCode.CATEGORY, CommandCode.UPDATE)]
         public async Task<ActionResult> Update(CategoryDto categoryDto, [FromServices] ShoeServiceDbContext context)
         {
             ResponseResult responseResult = new ResponseResult();
@@ -148,6 +153,7 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpDelete("Delete")]
+        [ClaimRequirement(FunctionCode.CATEGORY, CommandCode.DELETE)]
         public async Task<ActionResult> Delete(int id)
         {
             ResponseResult responseResult = new ResponseResult();

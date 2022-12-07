@@ -2,9 +2,9 @@
 {
     public class RoleManager
     {
-        public const string RoleAdmin = "ADMIN";
-        public const string RoleMember = "MEMBER";
-        public const string RoleStaff = "STAFF";
-        public const string RoleStoreManager = "STORE MANAGER";
+        public const string RoleAdmin = "Admin";
+        public const string RoleMember = "Member";
+        public const string RoleStaff = "Staff";
+        public const string RoleStoreManager = "Store Manager";
     }
 }

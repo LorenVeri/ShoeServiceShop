@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using ShoeService_Api.Constants;
 using ShoeService_Api.Authorization;
 using ShoeService_Common.Constants;
+using ShoeService_Data.Repository;
 
 namespace ShoeService_Api.Controllers
 {
@@ -32,33 +33,111 @@ namespace ShoeService_Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
+        //[HttpGet]
+        //[ClaimRequirement(FunctionCode.CATEGORY, CommandCode.VIEW)]
+        //public async Task<ActionResult> Get()
+        //{
+        //    ResponseResult responseResult = new ResponseResult();
+
+        //    var category = await _categoryRepository.GetAll().ToListAsync();
+        //    var categoryViewModels = new List<CategoryViewModel>();
+        //    if (category != null)
+        //    {
+        //        responseResult.StatusCode = (int)HttpStatusCode.OK;
+        //        responseResult.Status = CustomerNotification.Success;
+        //        responseResult.Message = CustomerNotification.Get_Success;
+        //        responseResult.Data = category;
+
+        //        return Ok(responseResult);
+        //    }
+        //    else
+        //    {
+        //        responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
+        //        responseResult.Status = CustomerNotification.Fail;
+        //        responseResult.Message = CustomerNotification.Get_Fail;
+
+        //        return BadRequest(responseResult);
+        //    }
+
+        //}
+
+        [HttpGet("filter")]
         [ClaimRequirement(FunctionCode.CATEGORY, CommandCode.VIEW)]
-        public async Task<ActionResult> Get()
+        public async Task<IActionResult> GetPagingCategory(string? filter, int? pageIndex, int? pageSize)
         {
-            ResponseResult responseResult = new ResponseResult();
+            var query = await _categoryRepository.GetAll().ToListAsync();
 
-            var category = await _categoryRepository.GetAll().ToListAsync();
-            var categoryViewModels = new List<CategoryViewModel>();
-            if (category != null)
+            if (query != null)
             {
-                responseResult.StatusCode = (int)HttpStatusCode.OK;
-                responseResult.Status = CustomerNotification.Success;
-                responseResult.Message = CustomerNotification.Get_Success;
-                responseResult.Data = category;
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    query = query.Where(r => r.Name.Contains(filter)).ToList();
+                }
+                var totalRecord = query.Count();
 
-                return Ok(responseResult);
+                pageSize = pageSize == null ? 25 : pageSize.Value;
+                pageIndex = pageIndex == null ? 1 : pageIndex.Value;
+
+                var item = query
+                    .Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToList();
+
+                var pagination = new Pagination<CategoryDto>()
+                {
+                    Items = _mapper.Map<List<CategoryDto>>(item),
+                    TotalRecords = totalRecord,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.OK,
+                    Status = NotificationBase.Success
+                };
+
+                return Ok(pagination);
             }
             else
             {
-                responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
-                responseResult.Status = CustomerNotification.Fail;
-                responseResult.Message = CustomerNotification.Get_Fail;
-                responseResult.Data = null;
+                var pagination = new Pagination<CategoryDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
 
-                return BadRequest(responseResult);
+                return BadRequest(pagination);
             }
-           
+        }
+
+        [HttpGet("{id}")]
+        [ClaimRequirement(FunctionCode.CATEGORY, CommandCode.VIEW)]
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            await Task.Yield();
+            var category = _categoryRepository.GetSingleById(id);
+
+            if (category == null)
+            {
+                var pagination = new Pagination<CategoryDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return BadRequest(pagination);
+            }
+            else
+            {
+                var pagination = new Pagination<CategoryDto>()
+                {
+                    Items = _mapper.Map<CategoryDto>(category),
+                    TotalRecords = 1,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return Ok(pagination);
+            }
         }
 
         [HttpPost("Create")]
@@ -85,7 +164,6 @@ namespace ShoeService_Api.Controllers
                     responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                     responseResult.Status = CustomerNotification.Fail;
                     responseResult.Message = CustomerNotification.Create_Fail;
-                    responseResult.Data = null;
 
                     return BadRequest(responseResult);
                 }
@@ -95,7 +173,6 @@ namespace ShoeService_Api.Controllers
                 responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                 responseResult.Status = CustomerNotification.Fail;
                 responseResult.Message = CustomerNotification.Create_Fail;
-                responseResult.Data = null;
 
                 return BadRequest(responseResult);
             }
@@ -114,7 +191,7 @@ namespace ShoeService_Api.Controllers
                     responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                     responseResult.Status = ShoeNotification.Fail;
                     responseResult.Message = ShoeNotification.Get_Fail;
-                    responseResult.Data = null;
+
                     return BadRequest(responseResult);
                 }
                 else
@@ -135,7 +212,6 @@ namespace ShoeService_Api.Controllers
                         responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                         responseResult.Status = ShoeNotification.Fail;
                         responseResult.Message = ShoeNotification.Update_Fail;
-                        responseResult.Data = null;
 
                         return BadRequest(responseResult);
                     }
@@ -146,7 +222,6 @@ namespace ShoeService_Api.Controllers
                 responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                 responseResult.Status = ShoeNotification.Fail;
                 responseResult.Message = ShoeNotification.Create_Fail;
-                responseResult.Data = null;
 
                 return BadRequest(responseResult);
             }
@@ -158,7 +233,7 @@ namespace ShoeService_Api.Controllers
         {
             ResponseResult responseResult = new ResponseResult();
 
-            if (id != null)
+            if (id != 0)
             {
                 var shoes = _categoryRepository.GetSingleById(id);
                 if (shoes != null)
@@ -178,7 +253,6 @@ namespace ShoeService_Api.Controllers
                         responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                         responseResult.Status = ShoeNotification.Fail;
                         responseResult.Message = ShoeNotification.Create_Fail;
-                        responseResult.Data = null;
 
                         return BadRequest(responseResult);
                     }
@@ -188,7 +262,7 @@ namespace ShoeService_Api.Controllers
                     responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                     responseResult.Status = ShoeNotification.Fail;
                     responseResult.Message = ShoeNotification.Get_Fail;
-                    responseResult.Data = null;
+
                     return BadRequest(responseResult);
                 }
             }
@@ -197,7 +271,6 @@ namespace ShoeService_Api.Controllers
                 responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
                 responseResult.Status = ShoeNotification.Fail;
                 responseResult.Message = ShoeNotification.Delete_Fail;
-                responseResult.Data = null;
 
                 return BadRequest(responseResult);
             }

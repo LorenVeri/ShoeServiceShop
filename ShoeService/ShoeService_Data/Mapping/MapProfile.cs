@@ -26,13 +26,16 @@ namespace ShoeService_Data.Mapping
             CreateMap<MemberShipDto, MemberShip>();
 
             CreateMap<Service, ServiceDto>();
-            CreateMap<ServiceDto, ServiceDto>();
+            CreateMap<ServiceDto, Service>();
 
             CreateMap<Storage, StorageDto>();
             CreateMap<StorageDto, Storage>();
 
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryDto, Category>();
+
+            CreateMap<Function, FunctionDto>();
+            CreateMap<FunctionDto, Function>();
         }
     }
 }

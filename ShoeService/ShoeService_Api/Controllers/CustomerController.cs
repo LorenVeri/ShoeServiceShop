@@ -31,30 +31,82 @@ namespace ShoeService_Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
+        [HttpGet("filter")]
         [ClaimRequirement(FunctionCode.CUSTOMER, CommandCode.VIEW)]
-        public async Task<ActionResult> Get()
+        public async Task<IActionResult> GetPaging(string? filter, int? pageIndex, int? pageSize)
         {
-            ResponseResult responseResult = new ResponseResult();
+            var query = await _customerRepository.GetAll().ToListAsync();
 
-            var user = await _customerRepository.GetAll().ToListAsync();
-            if (user != null)
+            if (query != null)
             {
-                responseResult.StatusCode = (int)HttpStatusCode.OK;
-                responseResult.Status = CustomerNotification.Success;
-                responseResult.Message = CustomerNotification.Get_Success;
-                responseResult.Data = user;
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    query = query.Where(r => r.FirstName.Contains(filter) || r.LastName.Contains(filter) || r.CustomerEmail.Contains(filter)).ToList();
+                }
+                var totalRecord = query.Count();
 
-                return Ok(responseResult);
+                pageSize = pageSize == null ? 25 : pageSize.Value;
+                pageIndex = pageIndex == null ? 1 : pageIndex.Value;
+
+                var item = query
+                    .Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToList();
+
+                var pagination = new Pagination<CustomerDto>()
+                {
+                    Items = _mapper.Map<List<CustomerDto>>(item),
+                    TotalRecords = totalRecord,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.OK,
+                    Status = NotificationBase.Success
+                };
+
+                return Ok(pagination);
             }
             else
             {
-                responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
-                responseResult.Status = CustomerNotification.Fail;
-                responseResult.Message = CustomerNotification.Get_Fail;
-                responseResult.Data = null;
+                var pagination = new Pagination<CustomerDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
 
-                return BadRequest(responseResult);
+                return BadRequest(pagination);
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ClaimRequirement(FunctionCode.CUSTOMER, CommandCode.VIEW)]
+        public async Task<IActionResult> GetById(int id)
+        {
+            await Task.Yield();
+            var customer = _customerRepository.GetSingleById(id);
+
+            if (customer == null)
+            {
+                var pagination = new Pagination<CustomerDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return BadRequest(pagination);
+            }
+            else
+            {
+                var pagination = new Pagination<CustomerDto>()
+                {
+                    Items = _mapper.Map<CustomerDto>(customer),
+                    TotalRecords = 1,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return Ok(pagination);
             }
         }
 
@@ -155,7 +207,7 @@ namespace ShoeService_Api.Controllers
         {
             ResponseResult responseResult = new ResponseResult();
 
-            if (id != null)
+            if (id != 0)
             {
                 var shoes = _customerRepository.GetSingleById(id);
                 if (shoes != null)

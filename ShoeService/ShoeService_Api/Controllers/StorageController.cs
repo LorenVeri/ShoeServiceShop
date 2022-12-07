@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShoeService_Api.Authorization;
@@ -11,6 +12,7 @@ using ShoeService_Data.Infrastructure;
 using ShoeService_Data.IRepository;
 using ShoeService_Model.Dtos;
 using ShoeService_Model.Models;
+using ShoeService_Model.ViewModel;
 using System.Net;
 
 namespace ShoeStorage_Api.Controllers
@@ -31,30 +33,81 @@ namespace ShoeStorage_Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
+        [HttpGet("filter")]
         [ClaimRequirement(FunctionCode.STORAGE, CommandCode.VIEW)]
-        public async Task<ActionResult> Get()
+        public async Task<IActionResult> GetPagingStorage(string? filter, int? pageIndex, int? pageSize)
         {
-            ResponseResult responseResult = new ResponseResult();
+            var query = await _storageRepository.GetAll().ToListAsync();
 
-            var storages = await _storageRepository.GetAll().ToListAsync();
-            if (storages != null)
+            if(query != null)
             {
-                responseResult.StatusCode = (int)HttpStatusCode.OK;
-                responseResult.Status = CustomerNotification.Success;
-                responseResult.Message = CustomerNotification.Get_Success;
-                responseResult.Data = storages;
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    query = query.Where(r => r.Name.Contains(filter)).ToList();
+                }
+                var totalRecord = query.Count();
 
-                return Ok(responseResult);
+                pageSize = pageSize == null ? 25 : pageSize.Value;
+                pageIndex = pageIndex == null ? 1 : pageIndex.Value;
+
+                var item = query
+                    .Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToList();
+
+                var pagination = new Pagination<StorageDto>()
+                {
+                    Items = _mapper.Map<List<StorageDto>>(item),
+                    TotalRecords = totalRecord,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.OK,
+                    Status = NotificationBase.Success
+                };
+
+                return Ok(pagination);
+            }else
+            {
+                var pagination = new Pagination<StorageDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return BadRequest(pagination);
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ClaimRequirement(FunctionCode.STORAGE, CommandCode.VIEW)]
+        public async Task<IActionResult> GetStorageById(int id)
+        {
+            await Task.Yield();
+            var storage = _storageRepository.GetSingleById(id);
+
+            if (storage == null)
+            {
+                var pagination = new Pagination<StorageDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return BadRequest(pagination);
             }
             else
             {
-                responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
-                responseResult.Status = CustomerNotification.Fail;
-                responseResult.Message = CustomerNotification.Get_Fail;
-                responseResult.Data = null;
+                var pagination = new Pagination<StorageDto>()
+                {
+                    Items = _mapper.Map<StorageDto>(storage),
+                    TotalRecords = 1,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
 
-                return BadRequest(responseResult);
+                return Ok(pagination);
             }
         }
 
@@ -142,7 +195,7 @@ namespace ShoeStorage_Api.Controllers
         {
             ResponseResult responseResult = new ResponseResult();
 
-            if (id != null || id > 0)
+            if (id != 0 || id > 0)
             {
                 var shoes = _storageRepository.GetSingleById(id);
                 if (shoes != null)

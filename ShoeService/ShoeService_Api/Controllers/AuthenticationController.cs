@@ -108,7 +108,7 @@ namespace ShoeService_Api.Controllers
 
                 var result = await _userManager.CreateAsync(user, user.PasswordHash);
 
-                if (result.Succeeded && user.IsActive == true)
+                if (result.Succeeded)
                 {
                     response.Status = "Thành công";
                     response.StatusCode = (int)HttpStatusCode.OK;
@@ -118,12 +118,6 @@ namespace ShoeService_Api.Controllers
                 }
                 else
                 {
-                    if (user.AccessFailedCount <= 5)
-                        user.AccessFailedCount++;
-                    else
-                        user.LockoutEnabled = false;
-                    await _context.SaveChangesAsync();
-
                     string notification = "";
                     foreach (var error in result.Errors)
                     {
@@ -195,6 +189,5 @@ namespace ShoeService_Api.Controllers
             var temp = strInput.Normalize(NormalizationForm.FormD);
             return ConvertToUnsign_rg.Replace(temp, string.Empty).Replace("đ", "d").Replace("Đ", "D").ToLower();
         }
-
     }
 }

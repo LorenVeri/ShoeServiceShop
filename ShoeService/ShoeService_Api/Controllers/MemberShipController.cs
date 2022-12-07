@@ -12,6 +12,7 @@ using ShoeService_Data.IRepository;
 using ShoeService_Data.Repository;
 using ShoeService_Model.Dtos;
 using ShoeService_Model.Models;
+using ShoeService_Model.ViewModel;
 using System.Net;
 using static ShoeService_Common.Constants.SystemConstants;
 
@@ -31,35 +32,87 @@ namespace ShoeService_Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
-        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.VIEW)]
-        public async Task<ActionResult> Get()
+        [HttpGet("filter")]
+        [ClaimRequirement(FunctionCode.SERVICES, CommandCode.VIEW)]
+        public async Task<IActionResult> GetPaging(string? filter, int? pageIndex, int? pageSize)
         {
-            ResponseResult responseResult = new ResponseResult();
+            var query = await _memerShipRepository.GetAll().ToListAsync();
 
-            var memberShip = await _memerShipRepository.GetAll().ToListAsync();
-            if (memberShip != null)
+            if (query != null)
             {
-                responseResult.StatusCode = (int)HttpStatusCode.OK;
-                responseResult.Status = CustomerNotification.Success;
-                responseResult.Message = CustomerNotification.Get_Success;
-                responseResult.Data = memberShip;
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    query = query.Where(r => r.Name.Contains(filter)).ToList();
+                }
+                var totalRecord = query.Count();
 
-                return Ok(responseResult);
+                pageSize = pageSize == null ? 25 : pageSize.Value;
+                pageIndex = pageIndex == null ? 1 : pageIndex.Value;
+
+                var item = query
+                    .Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToList();
+
+                var pagination = new Pagination<MemberShipDto>()
+                {
+                    Items = _mapper.Map<List<MemberShipDto>>(item),
+                    TotalRecords = totalRecord,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.OK,
+                    Status = NotificationBase.Success
+                };
+
+                return Ok(pagination);
             }
             else
             {
-                responseResult.StatusCode = (int)HttpStatusCode.BadRequest;
-                responseResult.Status = CustomerNotification.Fail;
-                responseResult.Message = CustomerNotification.Get_Fail;
-                responseResult.Data = null;
+                var pagination = new Pagination<MemberShipDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
 
-                return BadRequest(responseResult);
+                return BadRequest(pagination);
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ClaimRequirement(FunctionCode.SERVICES, CommandCode.VIEW)]
+        public async Task<IActionResult> GetById(int id)
+        {
+            await Task.Yield();
+            var membership = _memerShipRepository.GetSingleById(id);
+
+            if (membership == null)
+            {
+                var pagination = new Pagination<MemberShipDto>()
+                {
+                    TotalRecords = 0,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return BadRequest(pagination);
+            }
+            else
+            {
+                var pagination = new Pagination<MemberShipDto>()
+                {
+                    Items = _mapper.Map<MemberShipDto>(membership),
+                    TotalRecords = 1,
+                    Message = NotificationBase.Get_Success,
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Status = NotificationBase.Fail
+                };
+
+                return Ok(pagination);
             }
         }
 
         [HttpPost("Create")]
-        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.CREATE)]
+        [ClaimRequirement(FunctionCode.SERVICES, CommandCode.CREATE)]
         public async Task<ActionResult> Create(MemberShipDto memberShipDto)
         {
             ResponseResult responseResult = new ResponseResult();
@@ -99,7 +152,7 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpPut("Update")]
-        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.UPDATE)]
+        [ClaimRequirement(FunctionCode.SERVICES, CommandCode.UPDATE)]
         public async Task<ActionResult> Update(MemberShipDto memberShipDto, [FromServices] ShoeServiceDbContext context)
         {
             ResponseResult responseResult = new ResponseResult();
@@ -150,12 +203,12 @@ namespace ShoeService_Api.Controllers
         }
 
         [HttpDelete("Delete")]
-        [ClaimRequirement(FunctionCode.MEMBERSHIP, CommandCode.DELETE)]
+        [ClaimRequirement(FunctionCode.SERVICES, CommandCode.DELETE)]
         public async Task<ActionResult> Delete(int id)
         {
             ResponseResult responseResult = new ResponseResult();
 
-            if (id != null)
+            if (id != 0)
             {
                 var shoes = _memerShipRepository.GetSingleById(id);
                 if (shoes != null)

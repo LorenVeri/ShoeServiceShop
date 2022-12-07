@@ -131,8 +131,10 @@ builder.Services.AddScoped<IStorageHasShoesRepository, StorageHasShoesRepository
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IMemberShipRepository, MemberShipRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IFunctionRepository, FunctionRepository>();
 
 //DB Initialize
+
 //var serviceprovider = builder.Services.BuildServiceProvider();
 //try
 //{

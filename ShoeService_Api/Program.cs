@@ -16,7 +16,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
+var connectionString = builder.Configuration.GetConnectionString("DockerSqlConnection");
 builder.Services.AddDbContext<ShoeServiceDbContext>(options => options.UseSqlServer(connectionString));
 
 //Identity Config
@@ -135,16 +135,16 @@ builder.Services.AddScoped<IFunctionRepository, FunctionRepository>();
 
 //DB Initialize
 
-//var serviceprovider = builder.Services.BuildServiceProvider();
-//try
-//{
-//    //var dbInitializer = services.GetService<DbInitializer>();
-//    var dbInitializer = serviceprovider.GetService<DbInitialize>(); ;
-//    dbInitializer.Seed().Wait();
-//}
-//catch (Exception ex)
-//{
-//}
+var serviceprovider = builder.Services.BuildServiceProvider();
+try
+{
+    //var dbInitializer = services.GetService<DbInitializer>();
+    var dbInitializer = serviceprovider.GetService<DbInitialize>(); ;
+    dbInitializer.Seed().Wait();
+}
+catch (Exception ex)
+{
+}
 
 //Mapper
 builder.Services.AddAutoMapper(typeof(MapProfile));
